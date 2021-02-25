@@ -31,20 +31,19 @@ class EntryController extends Controller
     }
 
     public function edit(Entry $entry){
+        $this->authorize('update',$entry);
         return view('entries.edit', compact('entry'));
     }
 
 
 
       public function update(Request $request, Entry $entry){
-       // dd($request->all());
+       $this->authorize('update',$entry);
 
       $vlidateData = $request->validate([
         'title' => 'required|min:7|max:255|unique:entries,id,' . $entry->id,
         'content' => 'required|min:25|max:3000'
       ]);
-        // TODO: allow edit actio only for the author
-        // auth()->id === $entry->user_id
 
         $entry->title = $vlidateData['title'];
         $entry->content = $vlidateData['content'];
