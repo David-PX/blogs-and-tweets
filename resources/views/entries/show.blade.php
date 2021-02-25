@@ -13,8 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        @if($entry->user_id === auth()->id())
                     {{ $entry->content }}
+                        @if($entry->user_id === auth()->id())
+
                         <hr>
                     <a href="{{url('/entries/' .$entry->id . '/edit')}}"
                         class="btn btn-primary">
