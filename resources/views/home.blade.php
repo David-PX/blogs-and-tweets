@@ -14,6 +14,9 @@
                         </div>
                     @endif
 
+                    @if($entries->isEmpty())
+                    <p>You didn't publish any entry yet.</p>
+                    @else
                 <p>My entries:</p>
                 <ul>
                     @foreach ($entries as $entry)
@@ -22,6 +25,7 @@
 
                     @endforeach
                 </ul>
+                @endif
                 </div>
             </div>
         </div>
